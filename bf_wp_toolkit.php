@@ -28,11 +28,11 @@ if (!function_exists('activate_' . BFWPTK_SLUG)) {
 
     /**
      * The code that runs during plugin activation.
-     * This action is documented in includes/class-plugin-name-activator.php
      */
     function activate_bf_wp_toolkit()
     {
-        
+        require_once plugin_dir_path(__FILE__) . 'includes/activator.php';
+        BFWPToolkit_Activator::activate();
     }
 
 }
@@ -40,11 +40,11 @@ if (!function_exists('deactivate_' . BFWPTK_SLUG)) {
 
     /**
      * The code that runs during plugin deactivation.
-     * This action is documented in includes/class-plugin-name-deactivator.php
      */
     function deactivate_bf_wp_toolkit()
     {
-        
+        require_once plugin_dir_path(__FILE__) . 'includes/deactivator.php';
+        BFWPToolkit_Deactivate::deactivate();
     }
 
 }
@@ -56,4 +56,4 @@ register_deactivation_hook(__FILE__, 'deactivate_' . BFWPTK_SLUG);
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path(__FILE__) . '/src/Application/';
+//require plugin_dir_path(__FILE__) . '/src/Application/';
