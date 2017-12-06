@@ -1,11 +1,11 @@
 <?php
 /**
- * <b>Application</b>
+ * <b>BFWPToolkit</b>
  *
  * The core plugin class.
  * 
  * @package         Backfront
- * @subpackage      BFWPToolkit
+ * @subpackage      Application
  * @version         0.1.0
  *
  * @author          Douglas Alves <alves.douglaz@gmail.com>
@@ -15,11 +15,11 @@
  * @since           0.1.0
  */
 
-namespace BFWPToolkit
+namespace Application
 {
 
-    class Application
+    class BFWPToolkit
     {
-
+        
     }
 }
