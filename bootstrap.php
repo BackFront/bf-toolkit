@@ -25,7 +25,7 @@ define('BFWPTK_AUTH', '<YOUR HASH HERE!>'); //Used in authentications
 
 $autoloader = require_once(dirname(__FILE__) . '/vendor/autoload.php');
 
-$app = Backfront\Wordpress\Application::getInstance();
+$app = Application\Application::getInstance();
 
 /**
  * Application setup
