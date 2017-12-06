@@ -32,8 +32,8 @@ $app = Application\Application::getInstance();
  * @since 0.1.0
  */
 add_action('init', function() use(&$app) {
-    $app->MDLPATH = WPTS_MODULE_PATH;
-    $app->TPLPATH = WPTS_VIEWS_PATH;
+    $app->MDLPATH = BFWPTK_MODULE_PATH;
+    $app->TPLPATH = BFWPTK_VIEWS_PATH;
 });
 
 /**
