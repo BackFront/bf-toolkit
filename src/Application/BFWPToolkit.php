@@ -18,7 +18,7 @@
 namespace Application
 {
 
-    class BFWPToolkit
+    class BFWPToolkit extends \Backfront\Application
     {
 
         /**
@@ -62,6 +62,13 @@ namespace Application
         {
             $this->version = (defined(BFWPTK_VERSION)) ? BFWPTK_VERSION : '1.0.0';
             $this->plugin_name = (defined(BFWPTK_SLUG)) ? BFWPTK_VERSION : null;
+            $this->TPLPATH = (defined(BFWPTK_VIEWS_PATH)) ? BFWPTK_VIEWS_PATH : null;
+            $this->MDLPATH = (defined(BFWPTK_MODULE_PATH)) ? BFWPTK_MODULE_PATH : null;
+        }
+
+        public function run()
+        {
+            
         }
 
     }
