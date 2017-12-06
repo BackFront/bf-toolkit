@@ -6,7 +6,8 @@ if (!defined('ABSPATH'))
  * *********** *//* GLOBAL *//* CONSTANTS */
 define('BFWPTK_NAME', 'Backfront WP Toolkit');
 define('BFWPTK_SLUG', 'bf_wp_toolkit');
-define('BFWPTK_APP_DIR', '/BFWPToolkit');
+define('BFWPTK_DOMAIN', 'BFWPToolkit');
+define('BFWPTK_APP_DIR', '/BFWPToolkit'); //CORE DIRECTORY PATH
 define('BFWPTK_VERSION', '0.1.0');
 define('BFWPTK_MODULE_PATH', '/modules');
 define('BFWPTK_VIEWS_PATH', '/src' . BFWPTK_APP_DIR . '/Views');
