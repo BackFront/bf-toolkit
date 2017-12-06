@@ -10,7 +10,7 @@
  * Description:       A toolkit plugin containing multiple shortcodes to Wordpress 
  * Version:           0.1.0
  * Author:            Douglas Alves <alves.douglaz@gmail.com>
- * Author URI:        http://alvesdouglaz.com.br/
+ * Author URI:        https://github.com/backfront/
  * License:           Apache License 2.0
  * License URI:       https://www.apache.org/licenses/LICENSE-2.0
  * Text Domain:       Backfront WP Toolkit
@@ -24,22 +24,29 @@ if (!defined('WPINC'))
  * *********** *//* GLOBAL *//* CONFIGURATIONS */
 require_once(dirname(__FILE__) . '/bootstrap.php'); //Don't remove this line
 
-/**
- * The code that runs during plugin activation.
- * This action is documented in includes/class-plugin-name-activator.php
- */
-function activate_plugin_name()
-{
-    
-}
+if (!function_exists('activate_' . BFWPTK_SLUG)) {
 
-/**
- * The code that runs during plugin deactivation.
- * This action is documented in includes/class-plugin-name-deactivator.php
- */
-function deactivate_plugin_name()
-{
-    
+    /**
+     * The code that runs during plugin activation.
+     * This action is documented in includes/class-plugin-name-activator.php
+     */
+    function activate_bf_wp_toolkit()
+    {
+        
+    }
+
+}
+if (!function_exists('deactivate_' . BFWPTK_SLUG)) {
+
+    /**
+     * The code that runs during plugin deactivation.
+     * This action is documented in includes/class-plugin-name-deactivator.php
+     */
+    function deactivate_bf_wp_toolkit()
+    {
+        
+    }
+
 }
 
 register_activation_hook(__FILE__, 'activate_' . BFWPTK_SLUG);
