@@ -69,7 +69,7 @@ require plugin_dir_path(__FILE__) . '/src/Application/' . BFWPTK_DOMAIN . '.php'
  */
 function run_bf_wp_toolkit()
 {
-    $plugin = \Application\BFWPToolkit::getInstance();
+    $plugin = \BFWPToolkit\Application::getInstance();
     $plugin->run();
 }
 

@@ -24,14 +24,14 @@ define('BFWPTK_TEMPLATE_PATH', get_template_directory());
 define('BFWPTK_TEMPLATE_URI', get_template_directory_uri());
 define('BFWPTK_AUTH', '<YOUR HASH HERE!>'); //Used in authentications
 
-$autoloader = require_once(dirname(__FILE__) . '/vendor/autoload.php');
-
+$autoloader = require_once(dirname(__FILE__) . BFWPTK_AUTOLOAD);
+//$autoloader->add();
 /**
  * Application setup
  * @since 0.1.0
  */
 add_action('init', function(){
-   //Your inits 
+    //Your inits 
 });
 
 /**

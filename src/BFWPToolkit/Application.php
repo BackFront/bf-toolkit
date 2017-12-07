@@ -15,10 +15,10 @@
  * @since           0.1.0
  */
 
-namespace Application
+namespace BFWPToolkit
 {
 
-    class BFWPToolkit extends \Backfront\Application
+    class Application extends \Backfront\Application
     {
 
         /**
