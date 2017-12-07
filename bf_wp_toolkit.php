@@ -56,7 +56,7 @@ register_deactivation_hook(__FILE__, 'deactivate_' . BFWPTK_SLUG);
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path(__FILE__) . '/src/Application/' . BFWPTK_DOMAIN . '.php';
+require plugin_dir_path(__FILE__) . '/src/' . BFWPTK_DOMAIN . DIRECTORY_SEPARATOR . 'Application.php';
 
 /**
  * Begins execution of the plugin.

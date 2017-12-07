@@ -7,24 +7,26 @@ if (!defined('ABSPATH'))
 define('BFWPTK_NAME', 'Backfront WP Toolkit');
 define('BFWPTK_SLUG', 'bf_wp_toolkit');
 define('BFWPTK_DOMAIN', 'BFWPToolkit');
-define('BFWPTK_APP_DIR', '/BFWPToolkit'); //CORE DIRECTORY PATH
 define('BFWPTK_VERSION', '0.1.0');
-define('BFWPTK_MODULE_PATH', '/modules');
-define('BFWPTK_VIEWS_PATH', '/src' . BFWPTK_APP_DIR . '/Views');
-define('BFWPTK_INCLUDES_PATH', '/includes');
+
+define('BFWPTK_ABSPATH', dirname(__FILE__));
 define('BFWPTK_HOME_URL', get_home_url());
 
-define('BFWPTK_ADMIN_PATH', get_template_directory() . '/admin');
-define('BFWPTK_FRONT_PATH', get_template_directory() . '/front');
-define('BFWPTK_AUTOLOAD', '/vendor/autoload.php');
+define('BFWPTK_APP_DIR', BFWPTK_ABSPATH . '/BFWPToolkit'); //CORE DIRECTORY PATH
+define('BFWPTK_CORE_PATH', BFWPTK_ABSPATH . '/src');
+define('BFWPTK_MODULE_PATH', BFWPTK_ABSPATH . '/modules');
+define('BFWPTK_INCLUDES_PATH', BFWPTK_ABSPATH . '/includes');
+define('BFWPTK_ASSETS', BFWPTK_ABSPATH . '/front/assets');
+define('BFWPTK_AUTOLOAD', BFWPTK_ABSPATH . '/vendor/autoload.php');
+define('BFWPTK_VIEWS_PATH', '/src' . BFWPTK_APP_DIR . '/Views');
+define('BFWPTK_ADMIN_PATH', BFWPTK_ABSPATH . '/admin');
+define('BFWPTK_FRONT_PATH', BFWPTK_ABSPATH . '/front');
 
-define('BFWPTK_ASSETS', get_template_directory_uri() . '/front/assets');
-define('BFWPTK_MODEL_PATH', get_template_directory() . '/src');
-define('BFWPTK_TEMPLATE_PATH', get_template_directory());
-define('BFWPTK_TEMPLATE_URI', get_template_directory_uri());
 define('BFWPTK_AUTH', '<YOUR HASH HERE!>'); //Used in authentications
 
-$autoloader = require_once(dirname(__FILE__) . BFWPTK_AUTOLOAD);
+$autoloader = require_once(BFWPTK_AUTOLOAD);
+
+//$autoloader->addPsr4('BFWPToolkit\\', __DIR__ . '/src/BFWPToolkit/');
 //$autoloader->add();
 /**
  * Application setup
