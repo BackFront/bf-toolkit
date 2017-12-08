@@ -9,4 +9,5 @@ vendor/*
 /vendor/
 sitemap.xml
 sitemap.xml.gz
+composer.phar
 composer.lock
