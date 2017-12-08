@@ -21,7 +21,7 @@
     ],
     "require": {
         "twig/twig": "^1.24",
-        "backfront/umbrella": "dev-feature/Wordpress",
+        "backfront/umbrella": "dev-feature/wordpress",
         "php": ">=5.6.0"
     },
     "autoload": {
