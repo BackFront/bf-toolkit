@@ -10,7 +10,11 @@
         "plugin",
         "toolkit"
     ],
-    "license": "Apache License 2.0",
+    "license": "Apache-2.0",
+    "support": {
+        "issue": "https://github.com/snddigitall/bf-toolkit/labels/Support" ,
+        "wiki": "https://github.com/snddigitall/bf-toolkit/wiki" 
+    },
     "authors": [
         {
             "name": "Douglas Alves",
@@ -21,7 +25,7 @@
     ],
     "require": {
         "twig/twig": "^1.24",
-        "backfront/umbrella": "dev-feature/Wordpress",
+        "backfront/umbrella": "v0.1.0-beta",
         "php": ">=5.6.0"
     },
     "autoload": {
