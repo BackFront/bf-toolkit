@@ -12,13 +12,13 @@ define('BFWPTK_VERSION', '0.1.0');
 define('BFWPTK_ABSPATH', dirname(__FILE__));
 define('BFWPTK_HOME_URL', get_home_url());
 
-define('BFWPTK_APP_DIR', BFWPTK_ABSPATH . '/BFWPToolkit'); //CORE DIRECTORY PATH
+define('BFWPTK_APP_DIR', BFWPTK_ABSPATH . '/src/BFWPToolkit'); //CORE DIRECTORY PATH
 define('BFWPTK_CORE_PATH', BFWPTK_ABSPATH . '/src');
 define('BFWPTK_MODULE_PATH', BFWPTK_ABSPATH . '/modules');
 define('BFWPTK_INCLUDES_PATH', BFWPTK_ABSPATH . '/includes');
 define('BFWPTK_ASSETS', BFWPTK_ABSPATH . '/front/assets');
 define('BFWPTK_AUTOLOAD', BFWPTK_ABSPATH . '/vendor/autoload.php');
-define('BFWPTK_VIEWS_PATH', '/src' . BFWPTK_APP_DIR . '/Views');
+define('BFWPTK_VIEWS_PATH', BFWPTK_APP_DIR . '/Views');
 define('BFWPTK_ADMIN_PATH', BFWPTK_ABSPATH . '/admin');
 define('BFWPTK_FRONT_PATH', BFWPTK_ABSPATH . '/front');
 

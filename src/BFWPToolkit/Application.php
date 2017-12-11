@@ -18,7 +18,9 @@
 namespace BFWPToolkit
 {
 
-    class Application extends \Backfront\Application
+    use Backfront\Wordpress\Admin\Navegation;
+
+    class Application extends \Backfront\Wordpress\Application
     {
 
         /**
@@ -60,15 +62,50 @@ namespace BFWPToolkit
          */
         public function __construct()
         {
-            $this->version = (defined(BFWPTK_VERSION)) ? BFWPTK_VERSION : '1.0.0';
-            $this->plugin_name = (defined(BFWPTK_SLUG)) ? BFWPTK_VERSION : null;
-            $this->TPLPATH = (defined(BFWPTK_VIEWS_PATH)) ? BFWPTK_VIEWS_PATH : null;
-            $this->MDLPATH = (defined(BFWPTK_MODULE_PATH)) ? BFWPTK_MODULE_PATH : null;
+            $this->version = (!empty(BFWPTK_VERSION)) ? BFWPTK_VERSION : '0.1.0';
+            $this->plugin_name = (!empty(BFWPTK_SLUG)) ? BFWPTK_VERSION : 'BFWPToolkit';
+            $this->TPLPATH = (!empty(BFWPTK_VIEWS_PATH)) ? BFWPTK_VIEWS_PATH : null;
+            $this->MDLPATH = (!empty(BFWPTK_MODULE_PATH)) ? BFWPTK_MODULE_PATH : null;
         }
 
+        /**
+         * Adding the nav menu and submenu in wordpress admin.
+         * 
+         * @since       0.2.0-beta
+         * @return      void
+         */
+        public function buildNav()
+        {
+            $nav = new Navegation();
+            $nav->addMenu('bfwptoolkit', 'BFWPToolkit', 'manage_options', array(
+                $this, 'buildPianel'), null, 'dashicons-image-filter');
+        }
+
+        /**
+         * Panel callback to nav menu
+         * 
+         * @since       0.2.0-beta
+         * @return      void
+         */
+        public function buildPianel()
+        {
+            echo self::getInstance()
+                    ->twig()
+                    ->render('hello_world.twig', array(
+                        "say_hello" => "Just do it!"
+            ));
+        }
+
+        /**
+         * Run application
+         * 
+         * @since       0.1.0-beta
+         * @return \BFWPToolkit\Application
+         */
         public function run()
         {
-            
+            add_action('admin_menu', array($this, 'buildNav'));
+            return $this;
         }
 
     }
