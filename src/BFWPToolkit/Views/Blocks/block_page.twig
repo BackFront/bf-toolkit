@@ -1,0 +1,15 @@
+{% block page_wrap %}
+    <div class="bf custom-admin wrap">
+        <div class="container-fluid">
+            <div class="row">
+                {% block page_header %}
+                    {{ page.header | raw }}
+                {% endblock %}
+
+                {% block page_content %}
+                    {{ page.content | raw }}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
