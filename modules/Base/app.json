@@ -1,0 +1,19 @@
+{
+    "name": "Módulo Base",
+    "description": "Este módulo serve como base para a criação dos outros módulos.",
+    "version": "0.1.0",
+    "icon": "",
+    "cover": "",
+    "slug": "base",
+    "homepage": "",
+    "keywords": "",
+    "license": "",
+    "authors": [
+        {
+            "name": "",
+            "email": "",
+            "homepage": "",
+            "role": ""
+        }
+    ]
+}
