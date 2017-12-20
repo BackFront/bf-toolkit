@@ -33,31 +33,22 @@ class BaseController implements \BFWPToolkit\Module\IModule
     public function __construct(Application $app)
     {
         $this->app = $app;
-        $this->loadModuleInfos();
+        $this->run();
     }
 
     public function loadModuleInfos()
     {
-        echo "carregando informacoes do modulo";
+        $m = $this->app->moduleInstance->getCurrentModule();
+        $this->moduleInfo = json_decode(file_get_contents("{$m['path']}/{$m['module']}/app.json"));
         return $this;
     }
 
-    public function getModuleDescription()
+    public function getModuleInfos()
     {
-        
-    }
-
-    public function getModuleName()
-    {
-        
+        return $this->moduleInfo;
     }
 
     public function getModuleUI()
-    {
-        
-    }
-
-    public function getModuleVersion()
     {
         
     }
@@ -69,7 +60,7 @@ class BaseController implements \BFWPToolkit\Module\IModule
 
     public function run()
     {
-        
+        $this->loadModuleInfos();
     }
 
 }

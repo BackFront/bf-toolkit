@@ -56,10 +56,10 @@ namespace BFWPToolkit
          * The instance for Module class
          *
          * @since    0.2.0
-         * @access   protected
+         * @access   public
          * @var      string $moduleInstance The instance class.
          */
-        protected $moduleInstance;
+        public $moduleInstance;
 
         /**
          * Define the core functionality of the plugin.

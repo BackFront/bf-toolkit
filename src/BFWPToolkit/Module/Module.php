@@ -62,6 +62,11 @@ namespace BFWPToolkit\Module
             return $this;
         }
 
+        public function getCurrentModule()
+        {
+            return $this->currentModule;
+        }
+
         /**
          * Lists all modules registered
          */

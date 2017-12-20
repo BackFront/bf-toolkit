@@ -30,31 +30,9 @@ interface IModule
     function loadModuleInfos();
 
     /**
-     * Set the module name.
-     * 
-     * ATENCTION: Is recommended use this method with the protected access!
-     * 
-     * @param string $moduleName
+     * Load the informations of the module from app.json
      */
-    function getModuleName();
-
-    /**
-     * Set the module name.
-     * 
-     * ATENCTION: Is recommended use this method with the protected access!
-     * 
-     * @param string $moduleDescription
-     */
-    function getModuleDescription();
-
-    /**
-     * Set the module version.
-     * 
-     * ATENCTION: Is recommended use this method with the protected access!
-     * 
-     * @param string $moduleVersion
-     */
-    function getModuleVersion();
+    function getModuleInfos();
 
     /**
      * Set the module UI.
