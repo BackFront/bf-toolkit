@@ -1,5 +1,4 @@
 <?php
-
 /**
  * IModule
  *
@@ -15,8 +14,20 @@
  * @License URI:    https://www.apache.org/licenses/LICENSE-2.0
  * @since           0.1.0
  */
+
+namespace BFWPToolkit\Module;
+
+use BFWPToolkit\Application;
+
 interface IModule
 {
+
+    function __construct(Application $app);
+
+    /**
+     * Load the informations of the module from app.json
+     */
+    function loadModuleInfos();
 
     /**
      * Set the module name.
@@ -25,9 +36,8 @@ interface IModule
      * 
      * @param string $moduleName
      */
-    function setModuleName($moduleName);
     function getModuleName();
-    
+
     /**
      * Set the module name.
      * 
@@ -35,7 +45,6 @@ interface IModule
      * 
      * @param string $moduleDescription
      */
-    function setModuleDescription($moduleDescription);
     function getModuleDescription();
 
     /**
@@ -45,15 +54,15 @@ interface IModule
      * 
      * @param string $moduleVersion
      */
-    function setModuleVersion($moduleVersion = '0.1.0');
     function getModuleVersion();
-    
+
     /**
      * Set the module UI.
      * 
      * If is set as false, the module don't displaying on frontend. This means that this module will be running in background.
      */
     function setModuleUI($showInUI = true);
+
     function getModuleUI();
 
     /**
