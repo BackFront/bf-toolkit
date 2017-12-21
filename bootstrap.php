@@ -26,7 +26,7 @@ define('BFWPTK_AUTH', '<YOUR HASH HERE!>'); //Used in authentications
 
 $autoloader = require_once(BFWPTK_AUTOLOAD);
 
-//$autoloader->addPsr4('BFWPToolkit\\', __DIR__ . '/src/BFWPToolkit/');
+$autoloader->addPsr4('BFWPToolkit\\', __DIR__ . '/src/BFWPToolkit/');
 //$autoloader->add();
 /**
  * Application setup

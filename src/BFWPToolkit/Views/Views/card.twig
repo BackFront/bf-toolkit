@@ -1,0 +1,61 @@
+{% block card %}
+    <div class="ui card">
+        {% block card_inner %}
+
+            {% block card_before %} {% endblock %}
+
+            {% if card.image %}
+                {% block card_image %}
+                    <div class="image">
+                        {% if card.image.src %}
+                            <img src="{{ card.image.src | raw }}">
+                        {% endif %}
+                    </div>
+                {% endblock %}
+            {% endif %}
+
+            {% if card.content %}
+                {% block card_content %}
+                    <div class="content">
+
+                        {% if card.content.header %}
+                            {% block card_content_header %}
+                                <a class="header">
+                                    {{ card.content.header | raw }}
+                                </a>
+                            {% endblock %}
+                        {% endif %}
+
+                        {% if card.content.meta %}
+                            {% block card_content_meta %}
+                                <div class="meta">
+                                    {{ card.content.meta | raw }}
+                                </div>
+                            {% endblock %}
+                        {% endif %}
+
+                        {% if card.content.description %}
+                            {% block card_content_description %}
+                                <div class="description">
+                                    {{ card.content.description | raw }}
+                                </div>
+                            {% endblock %}
+                        {% endif %}
+
+                        {% block card_content_inner %} {% endblock %}
+                    </div>
+                {% endblock %}
+            {% endif %}
+            {% block card_after %} {% endblock %}
+
+            {% if card.extra %}
+                <div class="extra content">
+                    {% block card_extra_content %}
+                        {{ card.extra.content | raw }}
+                    {% endblock %}
+                </div>
+            {% endif %}
+
+        {% endblock %}
+    </div>
+{% endblock %}

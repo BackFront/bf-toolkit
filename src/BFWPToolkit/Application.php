@@ -93,14 +93,14 @@ namespace BFWPToolkit
             $tab->addTabItem([
                         'id' => 'modules',
                         'text' => 'Módulos',
-                        'active' => true], "modules content")
+                        'active' => true], AdminPage::modulos($this->twig()))
                     ->addTabItem([
                         'id' => 'update',
                         'text' => 'Atualizações',
-                        'label' => 2], "updates content")
+                        'label' => 2], "Coming soon")
                     ->addTabItem([
                         'id' => 'config',
-                        'text' => 'Configurações'], "configs content");
+                        'text' => 'Configurações'], "Coming soon");
 
             echo $this->wrappContent(
                     $tab->build()
@@ -113,8 +113,7 @@ namespace BFWPToolkit
                 "menu" => [
                     "header" => BFWPTK_NAME,
                     "itens" => array(
-                        ["text" => "Olá mundo"],
-                        ["text" => "Hello World"]
+                        ["text" => "Sobre"],
                     ),
                     "right" => '<input class="umb ui primary button" id="submit" name="submit" value="Salvar" type="submit">',
                 ]

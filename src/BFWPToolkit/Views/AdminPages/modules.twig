@@ -1,0 +1,45 @@
+{% extends "Views/card.twig" %}
+
+{% block card %}
+    <div class="ui cards four">
+        {% for module in modules %}
+
+            {% set card = module %}
+
+            {{ parent() }}
+
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% for module in modules %}
+    {% set card = module %}
+    {% block card_content_header %}
+        {{ parent() }}
+        <span>
+            {% if module.badges.verified %}
+                <i class="right floated check circle outline icon green" title="Verificado"></i>
+            {% endif %}
+            {% if module.badges.official %}
+                <i class="right floated certificate icon violet" title="Oficial"></i>
+            {% endif %}
+            {% if module.badges.secure %}
+                <i class="right floated protect icon blue" title="Protegido"></i>
+            {% endif %}
+        </span>
+    {% endblock %}
+    {% block card_content_inner %}
+        <div class="content meta" title="Desenvolvido por">
+            {% if module.author %}
+                <i class="user icon"></i>
+                <a href="{{ module.author.url }}" target="blank_">@{{ module.author.name }}</a>
+            {% endif %}
+        </div>
+    {% endblock %}
+    {% block card_extra_content %}
+        <div class="ui toggle checkbox">
+            <input name="public" type="checkbox" {% if module.extra.mod_is_on %}checked{% endif %}>
+            <label>Ativar módulo</label>
+        </div>
+    {% endblock %}
+{% endfor %}
