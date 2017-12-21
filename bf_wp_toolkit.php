@@ -2,7 +2,8 @@
 /**
  * @link              https://github.com/snddigitall/bf-toolkit
  * @since             0.1.0
- * @package           Backfront
+ * @version           0.1.0
+ * @package           WPBFToolkit
  *
  * @wordpress-plugin
  * Plugin Name:       Backfront WP Toolkit
@@ -110,6 +111,10 @@ require plugin_dir_path(__FILE__) . '/src/' . BFWPTK_DOMAIN . DIRECTORY_SEPARATO
 function run_bf_wp_toolkit()
 {
     $plugin = \BFWPToolkit\Application::getInstance();
+
+    $plugin
+            ->registerModule('Base')
+            ->registerModule('FacebookLogin');
     $plugin->run();
 }
 

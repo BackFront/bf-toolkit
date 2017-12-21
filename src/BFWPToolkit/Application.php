@@ -20,6 +20,7 @@ namespace BFWPToolkit
 
     use Backfront\Wordpress\Admin\Navegation;
     use Backfront\Generator\Tab;
+    use BFWPToolkit\Module\Module;
 
     class Application extends \Backfront\Wordpress\Application
     {
@@ -39,9 +40,9 @@ namespace BFWPToolkit
          *
          * @since    0.2.0
          * @access   protected
-         * @var      string    $plugin_name The string used to uniquely identify this plugin.
+         * @var      string    $pluginName The string used to uniquely identify this plugin.
          */
-        protected $plugin_name;
+        protected $pluginName;
 
         /**
          * The current version of the plugin.
@@ -51,6 +52,15 @@ namespace BFWPToolkit
          * @var      string $version The current version of the plugin.
          */
         protected $version;
+
+        /**
+         * The instance for Module class
+         *
+         * @since    0.2.0
+         * @access   public
+         * @var      string $moduleInstance The instance class.
+         */
+        public $moduleInstance;
 
         /**
          * Define the core functionality of the plugin.
@@ -64,9 +74,26 @@ namespace BFWPToolkit
         public function __construct()
         {
             $this->version = (!empty(BFWPTK_VERSION)) ? BFWPTK_VERSION : '0.1.0';
-            $this->plugin_name = (!empty(BFWPTK_SLUG)) ? BFWPTK_VERSION : 'BFWPToolkit';
+            $this->pluginName = (!empty(BFWPTK_SLUG)) ? BFWPTK_VERSION : 'BFWPToolkit';
             $this->TPLPATH = (!empty(BFWPTK_VIEWS_PATH)) ? BFWPTK_VIEWS_PATH : null;
             $this->MDLPATH = (!empty(BFWPTK_MODULE_PATH)) ? BFWPTK_MODULE_PATH : null;
+        }
+
+        public function registerModule($moduleName, $path = null)
+        {
+            if (is_null(self::getInstance()->MDLPATH) && empty($path)):
+                trigger_error("It is not possible to make calls to the modules. It is necessary to specify the modules directory before", E_USER_NOTICE);
+                return $this;
+            else:
+                if (!isset($this->moduleInstance)):
+                    $this->getInstance()->moduleInstance = new Module($this->getInstance());
+                endif;
+            endif;
+            $this
+                    ->getInstance()
+                    ->moduleInstance
+                    ->registerModule($moduleName, (!empty($path)) ? $path : self::getInstance()->MDLPATH);
+            return $this;
         }
 
         /**
@@ -137,6 +164,7 @@ namespace BFWPToolkit
         public function run()
         {
             add_action('admin_menu', array($this, 'buildNav'));
+            $this->getInstance()->moduleInstance->run(); //Run modules class
             return $this;
         }
 
