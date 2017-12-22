@@ -61,12 +61,15 @@ if (!function_exists('bf_load_dependences')):
 
         add_action('admin_enqueue_scripts', function($hook)
         {
-            if ($hook == "toplevel_page_" . BFWPTK_SLUG) {
+            if (in_array($hook, [
+                        "toplevel_page_" . BFWPTK_SLUG,
+                        BFWPTK_SLUG . "_page_" . BFWPTK_SLUG . "/about",
+                    ])) {
                 /** ====================
                  *  STYLES
                  * ===================== *//* Semantic-UI */
                 wp_enqueue_style('semantic_ui', BFWPTK_ASSETS_URL . '/libs/semantic_ui/semantic.min.css');
-                
+
                 /* ===================== *//* Bootstrap */
                 wp_enqueue_style('bootstrap_grid', BFWPTK_ASSETS_URL . '/css/bootstrap_grid.css');
 
@@ -74,7 +77,7 @@ if (!function_exists('bf_load_dependences')):
                  * ===================== *//* Reset */
                 wp_enqueue_style('bf_admin_reset', BFWPTK_ASSETS_URL . '/css/admin/reset_admin.css');
                 wp_enqueue_style('bf_admin_custom', BFWPTK_ASSETS_URL . '/css/admin/custom_admin.css');
-                
+
 
 
                 /** ====================

@@ -26,7 +26,7 @@ namespace BFWPToolkit
         /**
          * List all modules in admin page
          * 
-         * @param \Twig_Environment $templateSystem
+         * @param BFWPToolkit\Application $app
          * @return string Return the HTML page.
          */
         static function modulos(Application $app)
@@ -59,15 +59,19 @@ namespace BFWPToolkit
                         "mod_is_on" => true,
                     ]
                 );
-
             }
-            
+
             return
                             $app
                             ->twig()
                             ->render('AdminPages/modules.twig', array(
                                 "modules" => $modules
             ));
+        }
+
+        static function about($app)
+        {
+            return $app->twig()->render('AdminPages/about.twig', array(null));
         }
 
     }

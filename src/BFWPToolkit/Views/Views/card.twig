@@ -29,7 +29,7 @@
                         {% if card.content.meta %}
                             {% block card_content_meta %}
                                 <div class="meta">
-                                    {{ card.content.meta | raw }}
+                                    v{{ card.content.meta | raw }}
                                 </div>
                             {% endblock %}
                         {% endif %}

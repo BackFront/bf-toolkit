@@ -6,7 +6,7 @@
  * 
  * @package         Backfront
  * @subpackage      Application
- * @version         0.1.0
+ * @version         0.2.0
  *
  * @author          Douglas Alves <alves.douglaz@gmail.com>
  * @link            https://github.com/snddigitall/bf-toolkit
@@ -99,19 +99,22 @@ namespace BFWPToolkit
         /**
          * Adding the nav menu and submenu in wordpress admin.
          * 
-         * @since       0.2.0-beta
+         * @since       0.2.0
          * @return      void
          */
         public function buildNav()
         {
             $nav = new Navegation();
-            $nav->addMenu(BFWPTK_SLUG, 'BFWPToolkit', 'manage_options', array($this, 'buildPianel'), null, 'dashicons-image-filter');
+            $nav->addMenu(BFWPTK_SLUG, 'BFWPToolkit', 'manage_options', array($this, 'buildPianel'), null, 'dashicons-image-filter')
+                    ->addSubmenu(BFWPTK_SLUG . "/about", "Sobre", 'manage_options', function(){
+                        echo AdminPage::about($this->getInstance());
+                    });
         }
 
         /**
          * Panel callback to nav menu
          * 
-         * @since       0.2.0-beta
+         * @since       0.2.0
          * @return      void
          */
         public function buildPianel()
@@ -158,7 +161,7 @@ namespace BFWPToolkit
         /**
          * Run application
          * 
-         * @since       0.1.0-beta
+         * @since       0.1.0
          * @return \BFWPToolkit\Application
          */
         public function run()
