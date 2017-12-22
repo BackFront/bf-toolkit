@@ -24,6 +24,9 @@ namespace BFWPToolkit\Module
     class Module
     {
 
+        const FormatControllers = '\Module\\%1$s\\Controller\\%2$sController';
+        const FormatMainController = '%1$s/%2$s/Controller/%2$sController.php';
+
         /**
          * Instance of application
          * @var BFWPToolkit\Application $app 
@@ -109,12 +112,11 @@ namespace BFWPToolkit\Module
             //Instance main class first
             $MN = $this->currentModule['module']; //Module name
             $MP = $this->currentModule['path']; //Path to modules
-            $CNS = "\Module\\{$MN}\\Controller\\{$MN}Controller"; //Namespace for main class of the current module
+            $CNS = sprintf(self::FormatControllers, $MN, $MN); //Namespace for main class of the current module
 
-            require_once("{$MP}/{$MN}/Controller/{$MN}Controller.php"); //Include main class
+            require_once(sprintf(self::FormatMainController, $MP, $MN)); //Include main class
 
             foreach (glob($controllerPath . DIRECTORY_SEPARATOR . "*Controller.php") as $filename) {
-
                 $controllerName = str_replace(array($controllerPath . "/", ".php"), array("", ""), $filename);
                 if ($controllerName != "{$MN}Controller")
                     $files[] = $controllerName;
@@ -124,7 +126,7 @@ namespace BFWPToolkit\Module
                 new $CNS($this->app);
 
             foreach ($files as $instanceFiles) {
-                $moduleClassName = "\Module\\{$this->currentModule['module']}\\Controller\\{$instanceFiles}";
+                $moduleClassName = sprintf(self::FormatControllers, $MN, $instanceFiles);
                 if (class_exists($moduleClassName)) {
                     new $moduleClassName($this->app);
                 }
@@ -157,14 +159,14 @@ namespace BFWPToolkit\Module
             
         }
 
-//Verifica e atualiza os modulos. Baixa novos modulos caso disponiveis
+        //Verifica e atualiza os modulos. Baixa novos modulos caso disponiveis
 
         public function generateHash()
         {
             
         }
 
-//Gera um hash de verificacao unico para cada modulo
+        //Gera um hash de verificacao unico para cada modulo
 
     }
 }
