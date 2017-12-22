@@ -1,19 +1,19 @@
 {
     "name": "Módulo Base",
-    "description": "Este módulo serve como base para a criação dos outros módulos.",
+    "description": "Este módulo serve como base para a criação de novos módulos, além de conter um pacote com diversos helpers para desenvolvimento.",
     "version": "0.1.0",
     "icon": "",
-    "cover": "",
+    "cover": "/wp-content/plugins/bf_wp_toolkit/thumb.jpg",
     "slug": "base",
-    "homepage": "",
+    "homepage": "https://github.com/backfront",
     "keywords": "",
     "license": "",
     "authors": [
         {
-            "name": "",
-            "email": "",
-            "homepage": "",
-            "role": ""
+            "name": "backfront",
+            "email": "alves.douglaz@outlook.com",
+            "url": "https://github.com/backfront",
+            "role": "Developer"
         }
     ]
 }

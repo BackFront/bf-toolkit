@@ -47,7 +47,7 @@ class BaseController implements \BFWPToolkit\Module\IModule
     {
         return $this->moduleInfo;
     }
-
+    
     public function getModuleUI()
     {
         
