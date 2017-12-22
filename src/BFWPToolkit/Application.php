@@ -19,6 +19,7 @@ namespace BFWPToolkit
 {
 
     use Backfront\Wordpress\Admin\Navegation;
+    use Backfront\Generator\Tab;
     use BFWPToolkit\Module\Module;
 
     class Application extends \Backfront\Wordpress\Application
@@ -104,8 +105,7 @@ namespace BFWPToolkit
         public function buildNav()
         {
             $nav = new Navegation();
-            $nav->addMenu('bfwptoolkit', 'BFWPToolkit', 'manage_options', array(
-                $this, 'buildPianel'), null, 'dashicons-image-filter');
+            $nav->addMenu(BFWPTK_SLUG, 'BFWPToolkit', 'manage_options', array($this, 'buildPianel'), null, 'dashicons-image-filter');
         }
 
         /**
@@ -116,10 +116,42 @@ namespace BFWPToolkit
          */
         public function buildPianel()
         {
-            echo self::getInstance()
-                    ->twig()
-                    ->render('hello_world.twig', array(
-                        "say_hello" => "Just do it!"
+            $tab = new Tab($this);
+            $tab->addTabItem([
+                        'id' => 'modules',
+                        'text' => 'Módulos',
+                        'active' => true], AdminPage::modulos($this->twig()))
+                    ->addTabItem([
+                        'id' => 'update',
+                        'text' => 'Atualizações',
+                        'label' => 2], "Coming soon")
+                    ->addTabItem([
+                        'id' => 'config',
+                        'text' => 'Configurações'], "Coming soon");
+
+            echo $this->wrappContent(
+                    $tab->build()
+            );
+        }
+
+        protected function wrappContent($content)
+        {
+            $top_menu = $this->twig()->render('Collections/Menu.twig', array(
+                "menu" => [
+                    "header" => BFWPTK_NAME,
+                    "itens" => array(
+                        ["text" => "Sobre"],
+                    ),
+                    "right" => '<input class="umb ui primary button" id="submit" name="submit" value="Salvar" type="submit">',
+                ]
+            ));
+
+
+            return $this->twig()->render('Blocks/block_page.twig', array(
+                        "page" => [
+                            "header" => $top_menu,
+                            "content" => $content
+                        ]
             ));
         }
 

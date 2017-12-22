@@ -21,7 +21,7 @@ class HelloWorldController
 
     public function __construct()
     {
-        echo "<script>alert('" . __NAMESPACE__ . "')</script>";
+        echo "<script>console.log('Modulo Base say: its a test')</script>";
     }
 
 }

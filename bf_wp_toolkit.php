@@ -25,30 +25,70 @@ if (!defined('WPINC'))
  * *********** *//* GLOBAL *//* CONFIGURATIONS */
 require_once(dirname(__FILE__) . '/bootstrap.php'); //Don't remove this line
 
-if (!function_exists('activate_' . BFWPTK_SLUG)) {
+if (!function_exists('activate_' . BFWPTK_SLUG)) :
 
     /**
      * The code that runs during plugin activation.
      */
-    function activate_bf_wp_toolkit()
+    function activate_bfwptoolkit()
     {
         require_once plugin_dir_path(__FILE__) . 'includes/activator.php';
         BFWPToolkit_Activator::activate();
     }
 
-}
-if (!function_exists('deactivate_' . BFWPTK_SLUG)) {
+endif;
+
+
+if (!function_exists('deactivate_' . BFWPTK_SLUG)):
 
     /**
      * The code that runs during plugin deactivation.
      */
-    function deactivate_bf_wp_toolkit()
+    function deactivate_bfwptoolkit()
     {
         require_once plugin_dir_path(__FILE__) . 'includes/deactivator.php';
         BFWPToolkit_Deactivate::deactivate();
     }
 
-}
+endif;
+
+
+if (!function_exists('bf_load_dependences')):
+
+    /** Load, include and required dependences * */
+    function bf_load_dependences()
+    {
+
+        add_action('admin_enqueue_scripts', function($hook)
+        {
+            if ($hook == "toplevel_page_" . BFWPTK_SLUG) {
+                /** ====================
+                 *  STYLES
+                 * ===================== *//* Semantic-UI */
+                wp_enqueue_style('semantic_ui', BFWPTK_ASSETS_URL . '/libs/semantic_ui/semantic.min.css');
+                
+                /* ===================== *//* Bootstrap */
+                wp_enqueue_style('bootstrap_grid', BFWPTK_ASSETS_URL . '/css/bootstrap_grid.css');
+
+                /** AMDIN
+                 * ===================== *//* Reset */
+                wp_enqueue_style('bf_admin_reset', BFWPTK_ASSETS_URL . '/css/admin/reset_admin.css');
+                wp_enqueue_style('bf_admin_custom', BFWPTK_ASSETS_URL . '/css/admin/custom_admin.css');
+                
+
+
+                /** ====================
+                 *  SCRIPTS
+                 * ===================== *//* Semantic-UI */
+                wp_enqueue_script('semantic_ui', BFWPTK_ASSETS_URL . '/libs/semantic_ui/semantic.min.js', array('jquery'));
+
+                /** ==================== *//* Loader */
+                wp_enqueue_script('loader', BFWPTK_ASSETS_URL . '/js/loader.js', array('jquery', 'semantic_ui'));
+            }
+        });
+    }
+
+endif;
 
 register_activation_hook(__FILE__, 'activate_' . BFWPTK_SLUG);
 register_deactivation_hook(__FILE__, 'deactivate_' . BFWPTK_SLUG);
@@ -79,4 +119,5 @@ function run_bf_wp_toolkit()
 }
 
 //Run plugin application
+bf_load_dependences();
 run_bf_wp_toolkit();

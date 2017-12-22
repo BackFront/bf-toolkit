@@ -1,0 +1,30 @@
+{% extends "Blocks/block_admin_fluid_segment.twig" %}
+
+{% block admin_content_fluid_segment %}
+    <div class="row">
+        <div class="col">
+            <div class="ui vertical fluid tabular menu" data-menu>
+                {% for nav in navs %}
+                    <a class="item{{ nav.active }}" data-tab="{{ nav.id }}">
+                        {{nav.text}}
+                        {% if nav.label %}
+                            <div class="ui label">{{ nav.label }}</div>
+                        {% endif %}
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-10">
+            <div class="ui basic segment">
+                {% for painel in painels %}
+                    <div class="ui tab{{ painel.active }}" data-tab="{{ painel.id }}">
+                        {% block nav_header %}
+                            {{ painel.title }}
+                        {% endblock %}
+                        {{ painel.html|raw }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

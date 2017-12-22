@@ -1,0 +1,39 @@
+.debug  * { border: 1px solid }
+
+body { background: #f1f1f1; }
+
+.bf.ui.form .field { clear: none; }
+.bf.ui.button { height: auto; }
+.bf.remove { cursor: pointer !important; pointer-events: auto !important; }
+
+.bf.ui.fixed.sticky { margin-top: 32px !important; }
+
+
+.bf .ui.form .field { clear: none; }
+.bf .ui.button { height: auto; }
+.bf .remove { cursor: pointer !important; pointer-events: auto !important; }
+.bf .menu { padding-top: 0; margin-bottom: 1rem !important; }
+.bf .ui.menu:not(.vertical) .left.item,
+.bf .ui.menu:not(.vertical) .right.item { margin-right: 0px !important; }
+.bf .ui.segment.tab.active { margin-top: 0 !important; }
+.bf.ui.label.media { padding: 0 !important; }
+.bf.ui.label.media > img { width: auto !important; height: auto !important; }
+.wp-core-ui .ui.button { height: auto; }
+
+/* Generate Tree View for Categories */
+
+/* removes the 'to primary term'-link */
+ul.categorychecklist .wpseo-make-primary-term { display: none; }
+ul.categorychecklist li.is-parent > label { font-weight: bold; }
+ul.categorychecklist li ul.children { display: none; }
+ul.categorychecklist li.open > ul.children { display: block; }
+
+ul.categorychecklist .toggler {
+    float: right;
+    color: #666;
+    padding-top: 5px;
+    font:400 14px/1 dashicons!important;
+    cursor: pointer;
+}
+ul.categorychecklist li.open > .toggler::after { content: " \f460"; }
+ul.categorychecklist .toggler::after { content: " \f132"; }

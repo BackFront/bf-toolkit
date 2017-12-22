@@ -1,0 +1,19 @@
+<div class="bf ui menu fluid {{ menu.classe }}" {{ menu.args }}>
+    {% if menu.header %}
+        <div class="header item left">{% block menu_header menu.header | raw %}</div>
+    {% endif %}
+
+    {% for item in menu.itens %}
+        {% block loop_item %}
+            <a class="item" href="{{ item.link }}">{{ item.text }}</a>
+        {% endblock %}
+    {% endfor %}
+
+    {% if menu.right %}
+        {% block menu_right %}
+            <div class="item right">
+                {{ menu.right | raw }}
+            </div>
+        {% endblock %}
+    {% endif %}
+</div>

@@ -5,7 +5,7 @@ if (!defined('ABSPATH'))
 /** SITE
  * *********** *//* GLOBAL *//* CONSTANTS */
 define('BFWPTK_NAME', 'Backfront WP Toolkit');
-define('BFWPTK_SLUG', 'bf_wp_toolkit');
+define('BFWPTK_SLUG', 'bfwptoolkit');
 define('BFWPTK_DOMAIN', 'BFWPToolkit');
 define('BFWPTK_VERSION', '0.1.0');
 
@@ -16,7 +16,7 @@ define('BFWPTK_APP_DIR', BFWPTK_ABSPATH . '/src/BFWPToolkit'); //CORE DIRECTORY 
 define('BFWPTK_CORE_PATH', BFWPTK_ABSPATH . '/src');
 define('BFWPTK_MODULE_PATH', BFWPTK_ABSPATH . '/modules');
 define('BFWPTK_INCLUDES_PATH', BFWPTK_ABSPATH . '/includes');
-define('BFWPTK_ASSETS', BFWPTK_ABSPATH . '/front/assets');
+define('BFWPTK_ASSETS_URL', plugins_url('', __FILE__) . '/front/assets');
 define('BFWPTK_AUTOLOAD', BFWPTK_ABSPATH . '/vendor/autoload.php');
 define('BFWPTK_VIEWS_PATH', BFWPTK_APP_DIR . '/Views');
 define('BFWPTK_ADMIN_PATH', BFWPTK_ABSPATH . '/admin');
