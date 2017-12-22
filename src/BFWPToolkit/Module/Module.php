@@ -72,7 +72,7 @@ namespace BFWPToolkit\Module
          */
         public function listModules()
         {
-            
+            return $this->loadedModules;
         }
 
         /**
