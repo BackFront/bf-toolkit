@@ -78,6 +78,14 @@ namespace BFWPToolkit\Module
             return $this->loadedModules;
         }
 
+        public function getModuleInfos($ModulePath)
+        {
+            $json = "$ModulePath/app.json";
+            if (file_exists($json))
+                return json_decode(file_get_contents($json));
+            return false;
+        }
+
         /**
          * Return a recusive directory
          * 

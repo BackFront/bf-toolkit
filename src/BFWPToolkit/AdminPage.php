@@ -18,100 +18,55 @@
 namespace BFWPToolkit
 {
 
+    use BFWPToolkit\Application;
+
     class AdminPage
     {
-        
+
         /**
          * List all modules in admin page
          * 
          * @param \Twig_Environment $templateSystem
          * @return string Return the HTML page.
          */
-        static function modulos(\Twig_Environment $templateSystem)
+        static function modulos(Application $app)
         {
-            return $templateSystem->render('AdminPages/modules.twig', array(
-                        "modules" =>
-                        array(
-                            array(
-                                "image" => [ "src" => "http://placehold.it/300x200"],
-                                "content" => [
-                                    "header" => "Módulo Base",
-                                    "meta" => "v0.1.0",
-                                    "description" => "Módulo Base com alguns Helpers"
-                                ],
-                                "extra" => [
-                                    "mod_is_on" => true,
-                                ],
-                                "author" => [
-                                    "name" => "backfront",
-                                    "url" => "https://github.com/backfront"
-                                ],
-                                "badges" => [
-                                    "verified" => true,
-                                    "official" => true,
-                                    "secure" => true
-                                ]
-                            ),
-                            array(
-                                "image" => [ "src" => "http://placehold.it/300x200"],
-                                "content" => [
-                                    "header" => "Módulo Base",
-                                    "meta" => "v0.1.0",
-                                    "description" => "Módulo Base com alguns Helpers"
-                                ],
-                                "extra" => [
-                                    "mod_is_on" => true,
-                                ],
-                                "author" => [
-                                    "name" => "backfront",
-                                    "url" => "https://github.com/backfront"
-                                ],
-                                "badges" => [
-                                    "verified" => false,
-                                    "official" => false,
-                                    "secure" => true
-                                ]
-                            ), array(
-                                "image" => [ "src" => "http://placehold.it/300x200"],
-                                "content" => [
-                                    "header" => "Módulo Base",
-                                    "meta" => "v0.1.0",
-                                    "description" => "Módulo Base com alguns Helpers"
-                                ],
-                                "extra" => [
-                                    "mod_is_on" => false,
-                                ],
-                                "author" => [
-                                    "name" => "backfront",
-                                    "url" => "https://github.com/backfront"
-                                ],
-                                "badges" => [
-                                    "verified" => true,
-                                    "official" => false,
-                                    "secure" => false
-                                ]
-                            )
-                            , array(
-                                "image" => [ "src" => "http://placehold.it/300x200"],
-                                "content" => [
-                                    "header" => "Módulo Base",
-                                    "meta" => "v0.1.0",
-                                    "description" => "Módulo Base com alguns Helpers"
-                                ],
-                                "extra" => [
-                                    "mod_is_on" => true,
-                                ],
-                                "author" => [
-                                    "name" => "backfront",
-                                    "url" => "https://github.com/backfront"
-                                ],
-                                "badges" => [
-                                    "verified" => false,
-                                    "official" => false,
-                                    "secure" => false
-                                ]
-                            )
-                        )
+            $modules = array();
+
+            foreach ($app->moduleInstance->listModules() as $module) {
+                $json = $app->moduleInstance->getModuleInfos($module['path'] . DIRECTORY_SEPARATOR . $module['module']);
+
+                if (!$json)
+                    continue;
+
+                $modules[] = array(
+                    "image" => ["src" => $json->cover],
+                    "content" => [
+                        "header" => $json->name,
+                        "meta" => $json->version,
+                        "description" => $json->description
+                    ],
+                    "badges" => [
+                        "verified" => true,
+                        "official" => true,
+                        "secure" => true
+                    ],
+                    "author" => [
+                        "name" => $json->authors[0]->name,
+                        "url" => $json->authors[0]->url
+                    ],
+                    "extra" => [
+                        "mod_is_on" => true,
+                    ]
+                );
+
+            }
+            
+            return
+                            $app
+                            ->twig()
+                            ->render('AdminPages/modules.twig', array(
+                                "modules" => $modules
             ));
         }
 

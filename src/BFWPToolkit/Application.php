@@ -120,7 +120,7 @@ namespace BFWPToolkit
             $tab->addTabItem([
                         'id' => 'modules',
                         'text' => 'Módulos',
-                        'active' => true], AdminPage::modulos($this->twig()))
+                        'active' => true], AdminPage::modulos($this->getInstance()))
                     ->addTabItem([
                         'id' => 'update',
                         'text' => 'Atualizações',
