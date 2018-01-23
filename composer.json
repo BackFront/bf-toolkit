@@ -10,7 +10,11 @@
         "plugin",
         "toolkit"
     ],
-    "license": "Apache License 2.0",
+    "license": "Apache-2.0",
+    "support": {
+        "issue": "https://github.com/snddigitall/bf-toolkit/labels/Support" ,
+        "wiki": "https://github.com/snddigitall/bf-toolkit/wiki" 
+    },
     "authors": [
         {
             "name": "Douglas Alves",
